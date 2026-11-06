@@ -331,7 +331,7 @@ var ch=el("div","chips");it.pr.forEach(function(p,i){var sz=it.cols.length?it.co
 b.setAttribute("aria-label",T("أضف ","Add ")+it.name+(sz?" "+sz[L()]:"")+" "+p);
 b.onclick=function(){b.classList.remove("pop");void b.offsetWidth;b.classList.add("pop");add(it.name,sz,+p)};ch.appendChild(b)});row.appendChild(ch);return row}
 function renderTabs(){tabsEl.textContent="";M.forEach(function(m,i){var b=el("button",i===cur&&!qEl.value?"on":"",m.t[L()]);b.type="button";b.onclick=function(){cur=i;qEl.value="";renderTabs();renderMenu();var r=box.getBoundingClientRect();if(r.top<120)box.scrollIntoView({behavior:"smooth",block:"start"})};tabsEl.appendChild(b)});
-var on=tabsEl.querySelector(".on");if(on&&on.scrollIntoView)on.scrollIntoView({inline:"center",block:"nearest"})}
+var on=tabsEl.querySelector(".on");if(on){var a=on.getBoundingClientRect(),t=tabsEl.getBoundingClientRect();tabsEl.scrollLeft+=a.left+a.width/2-(t.left+t.width/2)}}
 function renderMenu(){var l=L(),q=qEl.value.trim().toLowerCase();box.textContent="";tabsEl.classList.toggle("dim",!!q);
 if(q){var hits=ALL.filter(function(it){return(it.name+" "+it.desc).toLowerCase().indexOf(q)>-1});
 if(!hits.length)box.appendChild(el("p","mnote",T("مفيش نتائج. جرّب كلمة تانية بالإنجليزي.","No results. Try another word.")));
